@@ -41,9 +41,6 @@ let app_init = async () => {
          app.all('*', function(req, res) {
           res.redirect("/classes");
         });
-       app.get('/',function(req,res){
-        res.sendFile(path.join(__dirname,"./dist/totalcloud-ui/index.html"));
-     });
 
 
        for await(let language of Languages){
