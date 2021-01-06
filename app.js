@@ -1,15 +1,10 @@
 const express = require('express');
 
-const app = express();
-
 const fs = require('fs');
 const bodyparser = require("body-parser");
 var path = require('path');
 var cors = require("cors");
-var results = [];
 const Languages = ['English','Hindi','Kannada','Maths','Science'];
-let allSubjects = [];
-let english=[];
 
 const models = require('./models/classModel');
 
@@ -37,13 +32,21 @@ let app_init = async () => {
      const routes = require("./routes");
         const app = express();
         app.use(cors());
-        app.use(bodyparser.json());
       
          app.use(routes);
          app.use(express.static(path.join(__dirname, './dist/totalcloud-ui')));
          app.get('/',function(req,res){
             res.sendFile(path.join(__dirname,"./dist/totalcloud-ui/index.html"));
          });
+         app.get('/classes',function(req,res){
+          res.sendFile(path.join(__dirname,"./dist/totalcloud-ui/index.html"));
+       });
+         app.all('*', function(req, res) {
+          res.redirect("/classes");
+        });
+       app.get('/',function(req,res){
+        res.sendFile(path.join(__dirname,"./dist/totalcloud-ui/index.html"));
+     });
 
 
        for await(let language of Languages){
