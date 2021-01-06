@@ -1,9 +1,7 @@
 const express = require('express');
 
 const fs = require('fs');
-const bodyparser = require("body-parser");
 var path = require('path');
-var cors = require("cors");
 const Languages = ['English','Hindi','Kannada','Maths','Science'];
 
 const models = require('./models/classModel');
