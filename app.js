@@ -29,7 +29,6 @@ const port = normalizePort(process.env.PORT || '3000');
 let app_init = async () => {
      const routes = require("./routes");
         const app = express();
-        app.use(cors());
       
          app.use(routes);
          app.use(express.static(path.join(__dirname, './dist/totalcloud-ui')));
